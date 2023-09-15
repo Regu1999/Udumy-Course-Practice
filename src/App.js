@@ -27,7 +27,11 @@ const EXPENCES = [
 function App() {
   const [expences, setExpences] = useState(EXPENCES)
   function addNewExpencesVal(val) {
-    let newExpences={...val, id:Math.floor(Math.random()*100)}
+    let newExpences={
+      ...val, 
+      id:Math.floor(Math.random()*100),
+      // date: new Date(2021, 5, 12),
+    }
     console.log(newExpences);
     // setExpences(prevState => {
     //   return {

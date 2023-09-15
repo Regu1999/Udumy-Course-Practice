@@ -22,10 +22,14 @@ export default function ExpenceForm({getNewExpences}) {
                 }
             })
         } else {
+            let month=new Date(val).toLocaleString('en-US', {month:'long'})
+            let day=new Date(val).toLocaleString('en-US', {day:'2-digit'})
+            let fullYear=new Date(val).getFullYear()
+            // console.log(val);
             setNewExpencesValue(prevState => {
                 return {
                     ...prevState,
-                    date: val
+                    date: new Date(fullYear,month,day)
                 }
             })
         }
