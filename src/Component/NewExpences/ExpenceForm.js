@@ -1,5 +1,5 @@
 import { useState } from "react"
-export default function ExpenceForm({getNewExpences}) {
+export default function ExpenceForm({ getNewExpences }) {
     // let expence={}
     const [newExpencesValue, setNewExpencesValue] = useState({
         title: '',
@@ -22,22 +22,24 @@ export default function ExpenceForm({getNewExpences}) {
                 }
             })
         } else {
-            let month=new Date(val).toLocaleString('en-US', {month:'long'})
-            let day=new Date(val).toLocaleString('en-US', {day:'2-digit'})
-            let fullYear=new Date(val).getFullYear()
-            // console.log(val);
             setNewExpencesValue(prevState => {
                 return {
                     ...prevState,
-                    date: new Date(fullYear,month,day)
+                    date: val
                 }
             })
         }
-        
+
     }
+
     function addExpences(event) {
         event.preventDefault()
-        getNewExpences(newExpencesValue);
+        const submitExpences = {
+            title: newExpencesValue.title,
+            amount: newExpencesValue.amount,
+            date: new Date(newExpencesValue.date)
+        }
+        getNewExpences(submitExpences);
         setNewExpencesValue(prevState => {
             return {
                 ...prevState,
@@ -46,7 +48,6 @@ export default function ExpenceForm({getNewExpences}) {
                 date: ""
             }
         })
-        
     }
     return (
         <>
@@ -54,15 +55,15 @@ export default function ExpenceForm({getNewExpences}) {
                 <div className="flex flex-wrap gap-4 mb-2 text-left">
                     <div>
                         <label className="block font-bold mb-2 ">Title</label>
-                        <input className="p-2 rounded-md w-80 border-2 border-white max-w-full" type="text" onChange={event => inputValueHandler(event.target.value,"title")} value={newExpencesValue.title} />
+                        <input className="p-2 rounded-md w-80 border-2 border-white max-w-full" type="text" onChange={event => inputValueHandler(event.target.value, "title")} value={newExpencesValue.title} required/>
                     </div>
                     <div>
                         <label className="block font-bold mb-2 ">Amount</label>
-                        <input className="p-2 rounded-md w-80 border-2 border-white max-w-full" type="number" min="0.01" step="0.01" onChange={event => inputValueHandler(event.target.value,"amount")} value={newExpencesValue.amount} />
+                        <input className="p-2 rounded-md w-80 border-2 border-white max-w-full" type="number" min="0.01" step="0.01" onChange={event => inputValueHandler(event.target.value, "amount")} value={newExpencesValue.amount} required/>
                     </div>
                     <div>
                         <label className="block font-bold mb-2 ">Date</label>
-                        <input className="p-2 rounded-md w-80 border-2 border-white max-w-full" type="date" onChange={event => inputValueHandler(event.target.value,"date")} value={newExpencesValue.date} />
+                        <input className="p-2 rounded-md w-80 border-2 border-white max-w-full" type="date" onChange={event => inputValueHandler(event.target.value, "date")} value={newExpencesValue.date} required/>
                     </div>
                 </div>
                 <div className="flex justify-end">
