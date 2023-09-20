@@ -2,6 +2,7 @@ import { useState } from "react"
 import ExpenceItem from "./ExpenceItem"
 import Card from "./Card"
 import ExpenceFilter from "./ExpencesFilter"
+import ExpencesChart from "./ExpencesChart"
 export default function ExpenceItems({ expenses }) {
     
     const [filterYear, setFilterYear] = useState("2020")
@@ -17,6 +18,7 @@ export default function ExpenceItems({ expenses }) {
         <>
             <div className=" flex justify-center">
                 <Card>
+                    <ExpencesChart />
                     <ExpenceFilter onFilterValue={getFilterValue} defaultYear={filterYear} expenses={expenses}/>
                     {newFillterVal.length==0 ?<h1 className="text-white font-bold text-center uppercase">no expences found</h1> : newFillterVal.map((expens) => {
                         return (

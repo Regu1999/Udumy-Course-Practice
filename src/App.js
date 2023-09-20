@@ -44,7 +44,7 @@ function App() {
 
   return (
     <>
-      <div className='bg-violet-950'>
+      <div className='bg-violet-950 p-3'>
         <NewExpences sendNewExpencesVal={addNewExpencesVal} />
         <ExpenceItems expenses={expences} />
       </div>

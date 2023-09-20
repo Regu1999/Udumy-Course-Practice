@@ -1,5 +1,5 @@
 import { useState } from "react"
-export default function ExpenceForm({ getNewExpences }) {
+export default function ExpenceForm({ getNewExpences, closeForm }) {
     // let expence={}
     const [newExpencesValue, setNewExpencesValue] = useState({
         title: '',
@@ -67,6 +67,7 @@ export default function ExpenceForm({ getNewExpences }) {
                     </div>
                 </div>
                 <div className="flex justify-end">
+                    <button type="button" className="py-4 px-8 bg-[#40005d]  text-white rounded-lg me-4" onClick={closeForm}>Cancel</button>
                     <button type="submit" className="py-4 px-8 bg-[#40005d] text-white rounded-lg me-4" >Add Expence</button>
                 </div>
             </form>
