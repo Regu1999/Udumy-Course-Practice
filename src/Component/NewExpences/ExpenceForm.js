@@ -18,7 +18,7 @@ export default function ExpenceForm({ getNewExpences, closeForm }) {
             setNewExpencesValue(prevState => {
                 return {
                     ...prevState,
-                    amount: val
+                    amount: +val
                 }
             })
         } else {
@@ -29,7 +29,6 @@ export default function ExpenceForm({ getNewExpences, closeForm }) {
                 }
             })
         }
-
     }
 
     function addExpences(event) {

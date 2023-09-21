@@ -25,11 +25,11 @@ import KeyConcept from './Component/reactKeyConcept/KeyConcept';
 //   },
 // ];
 function App() {
-  const [expences, setExpences] = useState(JSON.parse(localStorage.getItem("EXPENCES")))
+  const [expences, setExpences] = useState(JSON.parse(localStorage.getItem("EXPENCES")) || [])
   function addNewExpencesVal(val) {
     let newExpences = {
       ...val,
-      id: Math.floor(Math.random() * 100),
+      id: val.date,
     }
     setExpences((prevState) => {
       return [
@@ -41,7 +41,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("EXPENCES", JSON.stringify(expences))
   }, [expences])
-
+  // console.log(expences);
   return (
     <>
       <div className='bg-violet-950 p-3'>
